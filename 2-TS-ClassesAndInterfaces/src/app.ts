@@ -1,68 +1,47 @@
-class Department {
+// DEFINING AN INTERFACE
+interface Person {
   name: string;
-  readonly id: string;
-  // private employees: string[];
-  protected employees: string[];
+  readonly age: number;
 
-  constructor(name: string, id: string, employees: string[] = []) {
+  greet(phrase: string): void;
+}
+
+let user1: Person;
+
+user1 = {
+  name: 'Ishaan',
+  age: 26,
+
+  greet(phrase) {
+    console.log(`${phrase} World.`);
+  },
+};
+
+user1.greet('Hello');
+
+// INHERITING INTERFACES IN CLASSES
+interface Named {
+  name: string;
+  outputName?: string;
+
+  printName?(outputName: string): void;
+}
+interface Greetable extends Named {
+  greet(phrase: string): void;
+}
+
+class Human implements Greetable {
+  name: string;
+  age: number;
+  constructor(name: string, age: number) {
     this.name = name;
-    this.id = id;
-    this.employees = employees;
+    this.age = age;
   }
-
-  printProps(this: Department) {
-    console.log(`This is the ${this.name} department with id ${this.id}`);
-  }
-
-  addEmployee(empName: string) {
-    this.employees.push(empName);
-  }
-
-  printEmployeesInformation() {
-    console.log(this.employees.length);
-    console.log(this.employees);
+  greet(phrase: string): void {
+    console.log(`${phrase} me`);
   }
 }
 
-const accounting = new Department('Accounting', 'D1');
-accounting.addEmployee('Ishaan');
-accounting.addEmployee('Cheeka');
+const user2 = new Human('Ishaan', 26);
 
-accounting.printProps();
-accounting.printEmployeesInformation();
-
-class ITDepartment extends Department {
-  admins: string[];
-
-  constructor(name: string, id: string, admins: string[] = []) {
-    super(name, id);
-    this.admins = admins;
-  }
-}
-
-const it = new ITDepartment('I1', 'IT', ['Max']);
-it.addEmployee('Cheeka');
-
-console.log(it);
-
-class PagesDepartment extends Department {
-  private reports: string[];
-
-  constructor(name: string, id: string, reports: string[] = []) {
-    super(name, id);
-    this.reports = reports;
-  }
-
-  addReport(text: string) {
-    this.reports.push(text);
-  }
-
-  getReports() {
-    return console.log(`Here are your reports : ${this.reports}`);
-  }
-}
-
-const page = new PagesDepartment('Page', 'P1');
-page.addReport('Something went wrong');
-page.getReports();
-console.log(page);
+console.log(user2);

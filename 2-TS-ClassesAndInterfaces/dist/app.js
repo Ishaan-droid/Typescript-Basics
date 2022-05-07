@@ -1,23 +1,21 @@
 "use strict";
-class Department {
-    constructor(name, id, employees = []) {
+let user1;
+user1 = {
+    name: 'Ishaan',
+    age: 26,
+    greet(phrase) {
+        console.log(`${phrase} World.`);
+    },
+};
+user1.greet('Hello');
+class Human {
+    constructor(name, age) {
         this.name = name;
-        this.id = id;
-        this.employees = employees;
+        this.age = age;
     }
-    printProps() {
-        console.log(`This is the ${this.name} department with id ${this.id}`);
-    }
-    addEmployee(empName) {
-        this.employees.push(empName);
-    }
-    printEmployeesInformation() {
-        console.log(this.employees.length);
-        console.log(this.employees);
+    greet(phrase) {
+        console.log(`${phrase} me`);
     }
 }
-const accounting = new Department('Accounting', 'D1');
-accounting.addEmployee('Ishaan');
-accounting.addEmployee('Cheeka');
-accounting.printProps();
-accounting.printEmployeesInformation();
+const user2 = new Human('Ishaan', 26);
+console.log(user2);
