@@ -115,3 +115,9 @@ function moveAnimal(animal: Animal) {
 }
 
 moveAnimal({ type: 'horse', runningSpeed: 75 });
+
+// Type Casting
+
+const userInput = document.querySelector('#user-input') as HTMLInputElement;
+
+userInput.value = 'Hello World';
