@@ -88,3 +88,30 @@ function useVehicle(vehicle: Vehicle) {
 
 useVehicle(v1);
 useVehicle(v2);
+
+// Discriminated Unions - We are using literal type for type checking
+
+interface Bird {
+  type: 'bird';
+  flyingSpeed: number;
+}
+
+interface Horse {
+  type: 'horse';
+  runningSpeed: number;
+}
+
+type Animal = Bird | Horse;
+
+function moveAnimal(animal: Animal) {
+  switch (animal.type) {
+    case 'bird':
+      console.log(`Bird is running at speed of ${animal.flyingSpeed}kmph`);
+      break;
+    case 'horse':
+      console.log(`Horse is running at speed of ${animal.runningSpeed}kmph`);
+      break;
+  }
+}
+
+moveAnimal({ type: 'horse', runningSpeed: 75 });
