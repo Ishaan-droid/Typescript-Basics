@@ -39,3 +39,12 @@ function countAndDescribe<T extends Lengthy>(element: T) {
 
 const count = countAndDescribe(['No', 'Yes']);
 console.log(count);
+
+// Keyof operator
+
+function extract<T extends object, U extends keyof T>(obj: T, key: U) {
+  console.log(obj[key]);
+  return obj[key];
+}
+
+extract({ firstName: 'Ishaan' }, 'firstName');
