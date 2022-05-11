@@ -48,3 +48,28 @@ function extract<T extends object, U extends keyof T>(obj: T, key: U) {
 }
 
 extract({ firstName: 'Ishaan' }, 'firstName');
+
+// Generic Classes
+
+class DataStorage<T extends string | number> {
+  private data: T[] = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  removeItem(item: T) {
+    const idx = this.data.findIndex(cur => cur === item);
+    this.data.splice(idx, 1);
+  }
+
+  getItems() {
+    return [...this.data];
+  }
+}
+
+const textStorage = new DataStorage<string>();
+textStorage.addItem('Ishaan');
+textStorage.addItem('Cheeka');
+
+console.log(textStorage);
