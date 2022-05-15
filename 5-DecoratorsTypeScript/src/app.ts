@@ -25,3 +25,27 @@ class Person {
 }
 
 const pers = new Person();
+
+// PROPERTY DECORATORS
+function Log(target: any, propertyName: string | symbol) {
+  console.log('Property Decorator');
+  console.log(target);
+  console.log(propertyName);
+}
+
+class Product {
+  @Log
+  title: string;
+  price: number;
+
+  constructor(t: string, price: number) {
+    this.title = t;
+    this.price = price;
+  }
+
+  getPriceWithTax(tax: number) {
+    return this.price * tax + this.price;
+  }
+}
+
+const rubber = new Product('Rubber', 50);
