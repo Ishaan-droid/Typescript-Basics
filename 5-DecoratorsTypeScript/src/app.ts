@@ -49,3 +49,17 @@ class Product {
 }
 
 const rubber = new Product('Rubber', 50);
+
+const button = document.querySelector('button')! as HTMLButtonElement;
+
+class Printer {
+  message: string = 'This works';
+
+  showMessage() {
+    console.log(this.message);
+  }
+}
+
+const p = new Printer();
+
+button.addEventListener('click', p.showMessage.bind(p));
